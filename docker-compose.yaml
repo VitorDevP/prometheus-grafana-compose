@@ -8,7 +8,11 @@ services:
       - prometheus:/etc/prometheus
       - prometheus-data:/prometheus
     command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
-
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - ${GRAFANA_PORT}:3000
+    restart: on-failure
 volumes:
   prometheus-data:
   prometheus:
